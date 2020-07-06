@@ -31,12 +31,22 @@ let sucursales = {
         });
 
         if (sucursalBuscada != undefined) {
-            res.write(sucursalBuscada.sucursal + "\n");
+            res.write("-Sucursal:" + sucursalBuscada.sucursal + "\n");
             res.write("-Dirección:" + sucursalBuscada.direccion + "\n");
-            res.write("-Telefono" + sucursalBuscada.telefono + "\n");
-            res.write("Estos son los autos de la sucursal " + idSuc + ":\n\n");
+            res.write("-Telefono:" + sucursalBuscada.telefono + "\n");
+            res.write(
+                "-Cantidad de vehiculos:" + sucursalBuscada.autos.length + "\n"
+            );
+            res.write("Estos son los autos de la sucursal " + idSuc + ":\n");
             sucursalBuscada.autos.forEach(function (auto) {
-                res.write(auto.marca);
+                res.write(`
+                   * Marca: ${auto.marca}
+                   
+                   *Modelo: ${auto.modelo} 
+                    
+                   *Año: ${auto.anio}
+                   ----------------------
+             `);
             });
         } else {
             res.write("No se encuentra esta sucursal: " + idSuc);
